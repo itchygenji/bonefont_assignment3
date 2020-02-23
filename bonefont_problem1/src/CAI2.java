@@ -1,0 +1,116 @@
+import java.util.Scanner;
+import java.security.SecureRandom;
+
+/*The program shall generate random numbers with a SecureRandom object
+ * The program shall ask the student to solve a multiplication problem
+ * A multiplication problem shall contain two numbers sampled from a uniform random distribution in the range of 0 to 9 (inclusive)
+ * The program shall display a random positive message if the student provides a correct response
+ * The program shall display a random negative message if the student provides an incorrect response
+ * The program shall terminate when a correct response is provided by the student
+ * The program shall continue to ask the student to solve the original multiplication problem until the student provides the correct answer
+ * Create a method called "quiz" that contains the program logic
+ * Create a function called "askQuestion" that prints the problem to the screen
+ * Create a function called "readResponse" that reads the answer from the student
+ * Create a function called "isAsnwerCorrect" that checks to see if the student's answer matches the correct answer to the problem
+ * Create a function called "displayCorrectResponse" that prints out the response when a student enters a correct answer
+ * Create a function called "displayInorrectResponse" that prints out the response when a student enters an incorrect answer
+ * Part 1: Create a main method that runs your program by calling the "quiz" method*/
+
+
+
+
+public class CAI2 {
+	
+	static SecureRandom  randomNumbers = new SecureRandom();
+	private static int digit1 = randomNumbers.nextInt(10);
+	private static int digit2 = randomNumbers.nextInt(10);
+	private static int switchChoice = 1 + randomNumbers.nextInt(4);
+	private static int response;
+	
+	
+	private static void isAnswerCorrect() {
+		if(response == (digit1 * digit2)) {
+			displayCorrectResponse();
+		}else {
+			displayIncorrectResponse();
+		}
+	}
+	
+	private static void displayCorrectResponse() {
+		switch(switchChoice) {
+		case 1:
+			System.out.println("Very Good!");
+			break;
+		case 2:
+			System.out.println("Excellent!");
+			break;
+		case 3:
+			System.out.println("Nice work!");
+			break;
+		case 4:
+			System.out.println("Keep up the good work!");
+			break;
+		}
+	}
+	private static void displayIncorrectResponse() {
+		//System.out.println("No. Please try again.");
+		switch(switchChoice) {
+		case 1:
+			System.out.println("No. Please try again.");
+			break;
+		case 2:
+			System.out.println("Wrong. Try once more");
+			break;
+		case 3:
+			System.out.println("Don't give up!");
+			break;
+		case 4:
+			System.out.println("No. Keep trying.");
+			break;
+		}
+	}
+	
+	
+	private static void quiz(){
+		
+		askQuestion();
+		readResponse();
+		while(true) {
+			switchChoice = 1 + randomNumbers.nextInt(4);
+			//System.out.println(switchChoice);
+			if(response != (digit1 * digit2)) {
+				displayIncorrectResponse();
+				askQuestion();
+				readResponse();
+				continue;
+			}
+			else if(response == (digit1 * digit2)) {
+				isAnswerCorrect();
+				break;
+			}
+
+		}
+		
+		
+	}
+	
+	public static void askQuestion() {
+		System.out.printf("How much is %d times %d?%n", digit1, digit2);
+	}
+	
+	private static void readResponse() {
+		Scanner input = new Scanner(System.in);
+		response = input.nextInt();
+		
+	}
+	
+
+	public static void main(String[] args) {
+		
+		quiz();
+		
+
+
+	}
+
+}

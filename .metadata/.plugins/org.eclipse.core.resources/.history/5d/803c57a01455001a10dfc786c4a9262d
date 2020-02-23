@@ -1,0 +1,338 @@
+import java.security.SecureRandom;
+import java.util.Scanner;
+
+
+
+/*The program shall generate random numbers with a SecureRandom object
+ * The program shall ask the student to enter a difficulty level of 1, 2, 3, or 4
+ * A difficulty level of 1 shall limit random numbers to the range of 0-9, inclusive
+ * A difficulty level of 2 shall limit random numbers to the range of 0-99, inclusive
+ * A difficulty level of 3 shall limit random numbers to the range of 0-999, inclusive
+ * A difficulty level of 4 shall limit random numbers to the range of 0-9999, inclusive
+ * The program shall ask the student to enter a problem type of 1, 2, 3, 4, or 5 with an appropriate human-readable label
+ * The program shall ask the student to solve 10 different problems, as determined by the problem type
+ * A problem type of 1 shall limit the program to generating only addition problems
+ * A problem type of 2 shall limit the program to generating only multiplication problems
+ * A problem type of 3 shall limit the program to generating only subtraction problems
+ * A problem type of 4 shall limit the program to generating only division problems
+ * A problem type of 5 shall result questions that are a randomly mixture of addition, multiplication, subtraction, and division problems
+ * Problems shall contain two numbers sampled from a uniform random distribution with bounds determined by the problem difficulty
+ * The program shall display a random positive message if the student provides a correct response
+ * The program shall display a random negative message if the student provides an incorrect response
+ * The program shall display the student's score after the student has attempted to solve 10 problems
+ * The student's score shall be the percentage of problems correctly solved
+ * The program shall display the message "Please ask your teacher for extra help." if the student's score is less than 75%
+ * The program shall display the message "Congratulations, you are ready to go to the next level!" if the student's score is greater than or equal to 75%
+ * The program shall ask the student if they want to solve a new problem set after the score message has been displayed
+ * The program shall restart when the student agrees to solve a new problem set
+ * The program shall terminate when the student declines to solve another problem set
+ * Create a method called "quiz" that contains the program logic
+ * Create a method called "readDifficulty" that reads the difficulty level from the student
+ * Create a method called "readProblemType" that reads the difficulty level from the student
+ * Create a method called "generateQuestionArgument" that uses the difficulty level to generate a random number
+ * Create a method called "askQuestion" that prints the problem to the screen
+ * Create a method called "readResponse" that reads the answer from the student
+ * Create a method called "isAnswerCorrect" that checks to see if the student's answer matches the correct answer to the problem
+ * Create a method called "displayCorrectResponse" that prints out the response when a student enters a correct answer
+ * Create a method called "displayIncorrectResponse" that prints out the response when a student enters an incorrect answer
+ * Create a method called "displayCompletionMessage" that prints out the studen't score and appropriate score response
+ * Create a main method that runs your program by calling the "quiz" method*/
+
+
+
+
+public class CAI5 {
+	static SecureRandom  randomNumbers = new SecureRandom();
+	private static int digit1 = randomNumbers.nextInt(10);
+	private static int digit2 = randomNumbers.nextInt(10);
+	private static int switchChoice = 1 + randomNumbers.nextInt(4);
+	private static int response, correctAnswers, loopLength = 10, finalGradeResponse, difficultyResponse, arithmeticType;
+	private static String response2, b;
+	static boolean problemSetRepeat;
+	
+	
+	private static void isAnswerCorrect() {
+		if(response == (digit1 * digit2)) {
+			++correctAnswers;
+			displayCorrectResponse();
+		}else {
+			displayIncorrectResponse();
+		}
+	}
+	
+	private static void displayCorrectResponse() {
+		switch(switchChoice) {
+		case 1:
+			System.out.println("Very Good!");
+			break;
+		case 2:
+			System.out.println("Excellent!");
+			break;
+		case 3:
+			System.out.println("Nice work!");
+			break;
+		case 4:
+			System.out.println("Keep up the good work!");
+			break;
+		}
+	}
+	private static void displayIncorrectResponse() {
+		switch(switchChoice) {
+		case 1:
+			System.out.println("No. Please try again.");
+			break;
+		case 2:
+			System.out.println("Wrong. Try once more");
+			break;
+		case 3:
+			System.out.println("Don't give up!");
+			break;
+		case 4:
+			System.out.println("No. Keep trying.");
+			break;
+		}
+	}
+	
+	/*private static void message() {
+		while(true) {
+			switchChoice = 1 + randomNumbers.nextInt(4);
+			//System.out.println(switchChoice);
+			if(response != (digit1 * digit2)) {
+				displayIncorrectResponse();
+				askQuestion();
+				readResponse();
+				continue;
+			}
+			else if(response == (digit1 * digit2)) {
+				isAnswerCorrect();
+				break;
+			}
+
+		}
+	}*/
+	
+	private static void readProblemType(){
+		String [] arithmeticTypeArray = {"addition", "multiplication", "subtraction", "division", "random operation"};
+		System.out.println("Please select an arithmetic type between 1 and 5?");
+		int x = 0;
+		for(int i = 1; i < 6; i++) {
+			
+			System.out.printf("%d is for %s\n", i, arithmeticTypeArray[x]);
+			x++;
+		}
+		Scanner input = new Scanner(System.in);
+		arithmeticType = input.nextInt();
+		//if(arithmeticType == (x + 1)) {
+		int arithmeticChoice = arithmeticType - 1;
+		System.out.printf("\nYou chose a %s problem", arithmeticTypeArray[arithmeticChoice]);
+	
+	}
+	
+	private static void readDifficulty() {
+		System.out.println("Please select a difficulty level between 1 and 4?");
+		Scanner input = new Scanner(System.in);
+		difficultyResponse = input.nextInt();
+		//generateQuestionArgument();
+	}
+	
+	private static void generateQuestionArgument() {
+		if(difficultyResponse == 1) {
+			digit1 = randomNumbers.nextInt(10);
+			digit2 = randomNumbers.nextInt(10);
+			askQuestion();
+			readResponse();
+			//return a;
+		}
+		else if(difficultyResponse == 2) {
+			digit1 = 10 + randomNumbers.nextInt(100);
+			digit2 = 10 + randomNumbers.nextInt(100);
+			askQuestion();
+			readResponse();
+			//return a;
+		}
+		else if(difficultyResponse == 3) {
+			digit1 = 100 + randomNumbers.nextInt(1000);
+			digit2 = 100 + randomNumbers.nextInt(1000);
+			askQuestion();
+			readResponse();
+			//return a;
+		}
+		else if(difficultyResponse == 4) {
+			digit1 = 1000 + randomNumbers.nextInt(10000);
+			digit2 = 1000 + randomNumbers.nextInt(10000);
+			askQuestion();
+			readResponse();
+			//return a;
+		}else {
+			System.out.println("\nPlease try again and enter a correct choice\n\n");
+			readDifficulty();
+			generateQuestionArgument();
+		}
+		
+		
+	}
+	private static void quiz(){
+		//Scanner input = new Scanner(System.in);
+		//SecureRandom  randomNumbers = new SecureRandom();
+		//a = randomNumbers;
+		
+		//int[] digit = {1,2,3,4,5,6,7,8,9};
+		//for(int i = 0; i < 1000; i++) {
+		//int digit1 = randomNumbers.nextInt(10);
+		//int digit2 = randomNumbers.nextInt(10);
+		//System.out.println(digit1);
+		//System.out.println(digit2);
+		//return digit1;
+		//return digit2;
+		//}
+		do {
+			readDifficulty();
+			for(int i = 0; i < 2; i++) {
+				/*digit1 = randomNumbers.nextInt(10);
+				digit2 = randomNumbers.nextInt(10);
+				askQuestion();
+				readResponse();*/
+				//readDifficulty();
+				generateQuestionArgument();
+				while(true) {
+					switchChoice = 1 + randomNumbers.nextInt(4);
+					//System.out.println(switchChoice);
+					if(response != (digit1 * digit2)) {
+						//displayIncorrectResponse();
+						isAnswerCorrect();
+						System.out.println();
+						//askQuestion();
+						//readResponse();
+						//continue;
+						break;
+					}
+					else if(response == (digit1 * digit2)) {
+						isAnswerCorrect();
+						System.out.println();
+						break;
+					}
+
+				}
+			}
+			
+			displayCompletionMessage();
+			System.out.printf("\n\nIf you would you like to try another problem set; please type yes, otherwise type anything to quit?\n");
+			Scanner input = new Scanner(System.in);
+			response2 = input.nextLine();
+			//System.out.printf("%s%n", response2);
+			if(response2.equalsIgnoreCase("yes")) {
+				correctAnswers = 0;
+				quiz();
+			}else {
+				problemSetRepeat = false;
+				//System.out.println("Complete");
+				//System.exit(0);
+				System.out.println("Complete");
+			}
+		
+			}
+		while(problemSetRepeat == true);
+		
+		//b = response2;
+		//System.out.println(b);
+		//message();
+		//readResponse();
+		/*while(true) {
+			switchChoice = 1 + randomNumbers.nextInt(4);
+			//System.out.println(switchChoice);
+			if(response != (digit1 * digit2)) {
+				//displayIncorrectResponse();
+				isAnswerCorrect();
+				//askQuestion();
+				//readResponse();
+				//continue;
+				break;
+			}
+			else if(response == (digit1 * digit2)) {
+				isAnswerCorrect();
+				break;
+			}
+
+		}*/
+		
+		
+	}
+	
+	public static void askQuestion() {
+		/*for(int i = 0; i < 3; i++) {
+			digit1 = randomNumbers.nextInt(10);
+			digit2 = randomNumbers.nextInt(10);}*/
+			System.out.printf("How much is %d times %d?%n", digit1, digit2);
+			//readResponse();
+			//isAnswerCorrect();
+			//message();
+			//quiz();
+		//}
+	}
+	
+	private static void readResponse() {
+		Scanner input = new Scanner(System.in);
+		response = input.nextInt();
+		//System.out.println(response);
+	}
+	
+	private static void displayCompletionMessage() {
+		finalGradeResponse = (correctAnswers * 100) / 2;//(correctAnswers/5) * 100;
+		//System.out.println(correctAnswers);
+		
+		if(finalGradeResponse >= 75) {
+			System.out.printf("Congratulations, you are ready to go to the next level!\nYour score is %d%%", finalGradeResponse);
+		}else {
+			System.out.printf("Please ask your teacher for extra help.\nYour score is %d%%", finalGradeResponse);
+		}
+		//return finalGradeResponse;
+		//System.out.println(finalGradeResponse);
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.println(switchChoice);
+		
+		
+		
+		//quiz();
+		
+		
+		readProblemType();
+		
+		
+		
+		
+		
+		
+		
+		
+		/*if(finalGradeResponse >= 75) {
+			quiz();
+		}*/
+		//displayCompletionMessage();
+		//System.out.println(correctAnswers);
+		/*System.out.println("If you would you like to try another problem set type yes, otherwise type anything to quit?");
+		Scanner input = new Scanner(System.in);
+		response2 = input.nextLine();
+		//System.out.printf("%s%n", response2);
+		if(response2.equalsIgnoreCase("yes")) {
+			quiz();
+		}else {
+			//System.out.println("Complete");
+			System.exit(0);
+			System.out.println("Complete");
+		}*/
+		//int a = finalGradeResponse;
+		//System.out.println(finalGradeResponse);
+		//System.out.println();
+		
+		//figure out how to print out the finalGradeResponse, for fucks sake.
+		
+
+
+	}
+
+
+}

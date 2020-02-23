@@ -1,0 +1,67 @@
+import java.util.Scanner;
+import java.security.SecureRandom;
+
+/*
+ * Create a method called "quiz" that contains the program logic
+ * Create a method called "askQuestion" that prints the problem to the screen
+ * Create a method called "readResponse" that reads the answer from the student
+ * Create a method called "isAsnwerCorrect" that checks to see if the student's answer matches the correct answer to the problem
+ * Create a method called "displayCorrectResponse" that prints out the response when a student enters a correct answer
+ * Create a method called "displayInorrectResponse" that prints out the response when a student enters an incorrect answer
+ * Create a main method that runs your program by calling the "quiz" method
+ */
+
+public class CAI1 {
+	
+	public static void quiz(){
+		Scanner input = new Scanner(System.in);
+		SecureRandom  randomNumbers = new SecureRandom();
+		//a = randomNumbers;
+		
+		//int[] digit = {1,2,3,4,5,6,7,8,9};
+		//for(int i = 0; i < 1000; i++) {
+		int digit1 = randomNumbers.nextInt(10);
+		int digit2 = randomNumbers.nextInt(10);
+		System.out.println(digit1);
+		System.out.println(digit2);
+		//return digit1;
+		//return digit2;
+		//}
+		
+	}
+	
+	public static void askQuestion(int digit1, int digit2) {
+		System.out.printf("How much is %d times %d?", digit1, digit2);
+	}
+	
+
+
+
+	public static void main(String[] args) {
+		//SecureRandom a;
+		quiz();
+		askQuestion(0, 0);
+
+		//private int digit;
+		/*for(int i = 0; i < 9; i++) {
+			//digit = randomNumbers.nextInt(10);
+			System.out.printf("%d%n", digit);
+		}*/
+		//System.out.printf("%d", digit);
+	
+		//System.out.printf("%n%d", randomNumbers);
+		/*int[] frequency = new int[7];
+
+    	for(int roll = 1; roll < 60_000_000; roll++){
+      	++frequency[1 + randomNumbers.nextInt(6)];
+      	System.out.printf("%s%10s%n", "Face", "Frequency");
+
+    	for(int face = 1; face < frequency.length; face++){
+      	System.out.printf("%4d%10d%n", face, frequency[face]);*/
+		
+		
+		
+		//System.out.println("Please enter your answer?");
+	}
+
+}

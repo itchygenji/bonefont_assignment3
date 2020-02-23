@@ -1,0 +1,60 @@
+
+
+
+
+/*Create class SavingsAccount. Use a static variable annualInterestRate to store the annual interest rate 
+ * for all account holders. Each object of the class contains a private instance variable savingsBalance 
+ * indicating the amount the saver currently has on deposit. Provide method calculateMonthlyInterest to 
+ * calculate the monthly interest by multiplying the savingsBalance by annualInterestRate divided by 12—this 
+ * interest should be added to savingsBalance. Provide a static method modifyInterestRate that sets the 
+ * annualInterestRate to a new value.
+
+Write a program called SavingsAccountTest to test class SavingsAccount. Instantiate two SavingsAccount objects, 
+saver1 and saver2, with balances of $2000.00 and $3000.00, respectively. Set annualInterestRate to 4%, then 
+calculate the monthly interest for each of 12 months and print the monthly balances for both savers. Next, set 
+the annualInterestRate to 5%, calculate the next month’s interest and print the new balances for both savers.*/
+
+
+
+
+
+
+
+
+public class SavingsAccount {
+	
+	static double annualInterestRate;//to store the annual interest rate for all account holders
+	private double savingsBalance;//indicating the amount the saver currently has on deposit
+	
+	public SavingsAccount(double savingsBalance) {
+		if(savingsBalance > 0.0) {
+			this.savingsBalance = savingsBalance;
+		}
+	}
+	
+	public double getSavingsBalance() {
+		return savingsBalance;
+	}
+	
+	
+	
+	public static double modifyInterestRate(double annualInterestRate) {
+		return annualInterestRate;
+		//this.annualInterestRate = annualInterestRate;
+		//this.annualInterestRate = annualInterestRate;
+		//Provide a static method modifyInterestRate that sets the annualInterestRate to a new value.
+		//return annualInterestRate;
+		
+	}
+	public void calculateMonthlyInterest(double annualInterestRate) {
+		//calculate the monthly interest by multiplying the savingsBalance by annualInterestRate divided by 12
+		double monthlyInterestRate = (savingsBalance * annualInterestRate) / 12;
+		savingsBalance = savingsBalance + monthlyInterestRate;
+		/*modifyInterestRate();
+		savingsBalance = savingsBalance + (savingsBalance * annualInterestRate) / 12;*/
+		//calculate the monthly interest by multiplying the savingsBalance by annualInterestRate divided by 12
+	}
+	
+	
+
+}

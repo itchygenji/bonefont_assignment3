@@ -1,0 +1,104 @@
+
+
+
+/*Write a program called SavingsAccountTest to test class SavingsAccount. Instantiate two SavingsAccount objects, 
+saver1 and saver2, with balances of $2000.00 and $3000.00, respectively. Set annualInterestRate to 4%, then 
+calculate the monthly interest for each of 12 months and print the monthly balances for both savers. Next, set 
+the annualInterestRate to 5%, calculate the next month’s interest and print the new balances for both savers.*/
+
+
+
+
+public class SavingsAccountTest {
+	
+	//Instantiate two SavingsAccount objects, saver1 and saver2, with balances of $2000.00 and $3000.00
+	//Set annualInterestRate to 4%, then calculate the monthly interest for each of 12 months
+	//and print the monthly balances for both savers.
+	//set the annualInterestRate to 5%, calculate the next month’s interest
+	//print the new balances for both savers.
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] monthOfYear = {"Jan 2020", "Feb 2020", "Mar 2020", "Apr 2020", "May 2020", "Jun 2020", "Jul 2020", "Aug 2020", "Sep 2020", "Oct 2020", "Nov 2020", "Dec 2020", "Jan 2021"};
+		SavingsAccount saver1 = new SavingsAccount(2000.00);
+		SavingsAccount saver2 = new SavingsAccount(3000.00);
+		
+		
+		
+		
+		
+		//System.out.printf("%s%n", "Saver 1");
+		//System.out.printf("Initial Balance: %.2f%n", saver1.getSavingsBalance());
+		SavingsAccount.modifyInterestRate (0.04);
+		System.out.printf("Interest Rate is: %.2f%n", saver1.getAnnualInterestRate());
+		System.out.printf("Initial Balance: %.2f%16.2f%n", saver1.getSavingsBalance(), saver2.getSavingsBalance());
+		System.out.printf("%24s%16s%n", "Saver 1", "Saver 2");
+		System.out.printf("%s%21s%20s%n______________________________________________%n", "Month", "Savings Balance", "Savings Balance");//table header
+		//System.out.printf("__________________________%n");
+		for(int i = 0; i < 12; i++) {
+		
+			
+			
+			saver1.calculateMonthlyInterest(saver1.getAnnualInterestRate());//add to savingsBalance
+			saver2.calculateMonthlyInterest(saver2.getAnnualInterestRate());
+			//System.out.printf("%s%15.2f%n", monthOfYear[i], saver1.getSavingsBalance());//display balance
+			System.out.printf("%s%15.2f%20.2f%n", monthOfYear[i], saver1.getSavingsBalance(), saver2.getSavingsBalance());
+			System.out.printf("________|||_________________|||_______________%n");
+			
+		}
+		
+		SavingsAccount.modifyInterestRate (0.04);
+		System.out.printf("Interest Rate is: %.2f%n", saver1.getAnnualInterestRate());
+		System.out.printf("Initial Balance: %.2f%16.2f%n", saver1.getSavingsBalance(), saver2.getSavingsBalance());
+		System.out.printf("%24s%16s%n", "Saver 1", "Saver 2");
+		
+		/*System.out.printf("%n%n%s%n", "Saver 2");
+		System.out.printf("Initial Balance: %.2f%n", saver2.getSavingsBalance());
+		System.out.printf("Interest Rate is: %.2f%n", saver1.getAnnualInterestRate());
+		
+		System.out.printf("%s%21s%n__________________________%n", "Month", "Savings Balance");//table header
+		
+		for(int i = 0; i < 12; i++) {
+
+			
+			
+			saver2.calculateMonthlyInterest(saver2.getAnnualInterestRate());//add to savingsBalance
+	
+			
+			System.out.printf("%s%15.2f%n", monthOfYear[i], saver2.getSavingsBalance());//display balance
+			System.out.printf("________|||_______________%n");
+		
+		}*/
+		
+		
+		
+		
+		
+		
+		
+		
+		/*System.out.printf("%n%n%s%n", "Saver 1");
+		System.out.printf("Initial Balance: %.2f%n", saver1.getSavingsBalance());
+		SavingsAccount.modifyInterestRate (0.05);
+		System.out.printf("Interest Rate is: %.2f%n", saver1.getAnnualInterestRate());
+		System.out.printf("%s%21s%n__________________________%n", "Month", "Savings Balance");//table header
+		saver1.calculateMonthlyInterest(saver1.getAnnualInterestRate());
+		System.out.printf("%s%15.2f%n", monthOfYear[12], saver1.getSavingsBalance());//display balance
+		System.out.printf("________|||_______________%n");
+		
+		
+		
+		System.out.printf("%n%n%s%n", "Saver 2");
+		System.out.printf("Initial Balance: %.2f%n", saver2.getSavingsBalance());
+		System.out.printf("Interest Rate is: %.2f%n", saver2.getAnnualInterestRate());
+		System.out.printf("%s%21s%n__________________________%n", "Month", "Savings Balance");//table header
+		saver2.calculateMonthlyInterest(saver2.getAnnualInterestRate());
+		System.out.printf("%s%15.2f%n", monthOfYear[12], saver2.getSavingsBalance());//display balance
+		System.out.printf("________|||_______________%n");*/
+		
+		
+
+	}
+
+
+}

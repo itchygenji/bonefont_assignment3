@@ -1,0 +1,95 @@
+import java.util.Scanner;
+import java.security.SecureRandom;
+
+/*
+ * Create a method called "quiz" that contains the program logic
+ * Create a method called "askQuestion" that prints the problem to the screen
+ * Create a method called "readResponse" that reads the answer from the student
+ * Create a method called "isAsnwerCorrect" that checks to see if the student's answer matches the correct answer to the problem
+ * Create a method called "displayCorrectResponse" that prints out the response when a student enters a correct answer
+ * Create a method called "displayInorrectResponse" that prints out the response when a student enters an incorrect answer
+ * Create a main method that runs your program by calling the "quiz" method
+ */
+
+public class CAI1 {
+	//private int digit1, digit2;
+	static SecureRandom  randomNumbers = new SecureRandom();
+	private static int digit1 = randomNumbers.nextInt(10);
+	private static int digit2 = randomNumbers.nextInt(10);
+	private static int response;
+	//private int digit2;
+	
+	
+	/*public void setDigit1(int digit1) {
+		digit1 = randomNumbers.nextInt(10);
+		this.digit1 = digit1;
+	}
+	
+	public void setDigit2(int digit2) {
+		this.digit2 = digit2;
+	}
+	
+	public static int getDigit1() {
+		return digit1;
+	}
+	
+	public int getDigit2() {
+		return digit2;
+	}*/
+	
+	private static void isAnswerCorrect() {
+		if(response == (digit1 * digit2)) {
+			displayCorrectResponse();
+		}else {
+			displayInorrectResponse();
+		}
+	}
+	private static void displayCorrectResponse() {
+		System.out.println("Very Good!");
+	}
+	private static void displayInorrectResponse() {
+		System.out.println("No. Please try again.");
+	}
+	
+	
+	private static void quiz(){
+		//Scanner input = new Scanner(System.in);
+		//SecureRandom  randomNumbers = new SecureRandom();
+		//a = randomNumbers;
+		
+		//int[] digit = {1,2,3,4,5,6,7,8,9};
+		//for(int i = 0; i < 1000; i++) {
+		//int digit1 = randomNumbers.nextInt(10);
+		//int digit2 = randomNumbers.nextInt(10);
+		System.out.println(digit1);
+		System.out.println(digit2);
+		//return digit1;
+		//return digit2;
+		//}
+		
+		
+		
+	}
+	
+	public static void askQuestion() {
+		System.out.printf("How much is %d times %d?%n", digit1, digit2);
+	}
+	
+
+
+
+	public static void main(String[] args) {
+		quiz();
+		askQuestion();
+		readResponse();
+		isAnswerCorrect();
+	}
+	
+	private static void readResponse() {
+		Scanner input = new Scanner(System.in);
+		response = input.nextInt();
+		System.out.println(response);
+	}
+	
+
+}
